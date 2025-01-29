@@ -1,5 +1,8 @@
 @import "./json-preview.css";
 @import "./tool-tip.css";
+:root {
+  --theme-color: #316cdd;
+}
 
 body {
   font-family: Inter, sans-serif;
@@ -124,7 +127,7 @@ header nav {
 }
 
 header nav li a:hover, header nav li a.active {
-  color: #715cdd;
+  color: var(--theme-color);
 }
 
 .header-ul .hamburger-icon {
@@ -201,30 +204,30 @@ footer a {
 }
 
 .primary-btn {
-  background: #715cdd;
+  background: var(--theme-color);
   color: #fff;
   cursor: pointer;
 }
 
 .primary-btn:hover {
-  background: #715cdd;
+  background: var(--theme-color);
   color: #fff;
   font-weight: 600;
 }
 
 .secondary-btn {
-  border: 1px solid #715cdd;
-  color: #715cdd;
+  border: 1px solid var(--theme-color);
+  color: var(--theme-color);
 }
 
 .secondary-btn:hover {
-  color: #715cdd;
+  color: var(--theme-color);
   font-weight: bold;
 }
 
 .tertiary-btn {
   background: #ffffff;
-  color: #715cdd;
+  color: var(--theme-color);
   font-weight: bold;
 }
 
@@ -313,7 +316,7 @@ footer a {
 }
 
 .blog-column-left .blog-content a {
-  color: #715cdd;
+  color: var(--theme-color);
 }
 
 /* blog individual page */
@@ -333,7 +336,7 @@ footer a {
 }
 
 .blogpost-readmore {
-  color: #715cdd;
+  color: var(--theme-color);
 }
 
 .card-cta {
@@ -351,7 +354,7 @@ footer a {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
-  background: #715cdd;
+  background: var(--theme-color);
   padding: 63px;
   color: #fff;
   flex-wrap: wrap;
@@ -401,7 +404,7 @@ footer a {
 
 .content-section a {
   font-weight: bold;
-  color: #715cdd;
+  color: var(--theme-color);
 }
 
 .home-featured-blogs {
@@ -611,7 +614,7 @@ footer a {
 /* blog list */
 
 .blog-page-banner {
-  background: #715cdd;
+  background: var(--theme-color);
   text-align: center;
 }
 
@@ -858,15 +861,15 @@ footer a {
   }
 
   .secondary-btn {
-    border: 1px solid #715cdd;
-    color: #715cdd;
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
   }
 
   .hero-banner {
     display: flex;
     justify-content: space-evenly;
     text-align: left;
-    background: #715cdd;
+    background: var(--theme-color);
     padding: 28px;
     color: #fff;
     flex-wrap: wrap;
@@ -1084,8 +1087,8 @@ footer a {
   }
 
   .secondary-btn {
-    border: 1px solid #715cdd;
-    color: #715cdd;
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
   }
 
   body h1 {
@@ -1116,7 +1119,7 @@ footer a {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    background: #715cdd;
+    background: var(--theme-color);
     padding: 63px;
     color: #fff;
     flex-wrap: nowrap;
