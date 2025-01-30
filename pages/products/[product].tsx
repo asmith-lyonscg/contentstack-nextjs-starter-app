@@ -78,7 +78,11 @@ export default function ProductPost({ productPost, pageUrl }: {
           )}
           <div className="product-description">
             {getProduct && getProduct.product_description ? (
-              <div {...getProduct.$?.product_description as {}}>{parse(getProduct.product_description)}</div>
+              <div {...getProduct.$?.product_description as {}}>
+                {getProduct.product_description.children?.map((child, index) => (
+                  <p key={index}>{parse(child.children?.[0]?.text || '')}</p>
+                ))}
+              </div>
             ) : (
               <Skeleton height={400} />
             )}

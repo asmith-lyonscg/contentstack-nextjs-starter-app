@@ -44,6 +44,7 @@ export const getAllEntries = async (): Promise<Page[]> => {
 };
 
 export const getPageRes = async (entryUrl: string): Promise<Page> => {
+  console.log('Fetching page for URL:', entryUrl);
   const response = (await getEntryByUrl({
     contentTypeUid: "page",
     entryUrl,
@@ -55,6 +56,7 @@ export const getPageRes = async (entryUrl: string): Promise<Page> => {
     ],
   })) as Page[];
   
+  console.log('Raw page response:', response);
   if (liveEdit && response[0]?.uid) {
     addEditableTags(response[0] as any, "page", true);
   }
@@ -104,5 +106,21 @@ export const getProductSingleRes = async (entryUrl: string): Promise<Products> =
   })) as Products[];
   
   liveEdit && addEditableTags(response[0], "product", true);
+  return response[0];
+};
+
+export const getGalleryRes = async (entryUrl: string): Promise<Page> => {
+  console.log('Fetching gallery for URL:', entryUrl);
+  const response = (await getEntryByUrl({
+    contentTypeUid: "gallery",
+    entryUrl,
+    referenceFieldPath: ["product_list"],
+    jsonRtePath: ["description"],
+  })) as Page[];
+  
+  console.log('Raw gallery response:', response);
+  if (liveEdit && response[0]?.uid) {
+    addEditableTags(response[0] as any, "gallery", true);
+  }
   return response[0];
 };

@@ -1,60 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { onEntryChange } from '../../contentstack-sdk';
-import { getPageRes, getProductListRes } from '../../helper';
+import { getPageRes, getProductListRes, getGalleryRes } from '../../helper';
 import { Page, Products, PageUrl, Context } from "../../typescript/pages";
-import GalleryReact from '../../components/gallery';
+import Link from 'next/link';
 
-export default function ProductsPage({ page, products, pageUrl }: { 
-  page: Page, 
-  products: Products[], 
-  pageUrl: PageUrl 
-}) {
-  const [getBanner, setBanner] = useState(page);
+export default function ProductsPage({ page, products }: { page: Page, products: Products[] }) {
   const [getProducts, setProducts] = useState(products);
   
-  async function fetchData() {
-    try {
-      const bannerRes = await getPageRes(pageUrl);
-      const productsRes = await getProductListRes();
-      if (!bannerRes) throw new Error('Status code 404');
-      setBanner(bannerRes);
-      setProducts(productsRes);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
-    onEntryChange(() => fetchData());
+    onEntryChange(() => {
+      getProductListRes().then(setProducts);
+    });
   }, []);
 
   return (
     <>
-      <GalleryReact
-        data={getProducts}
-        heading={getBanner?.title}
-        description={getBanner?.description}
-        showFilter={false}
-        showDescription
-      />
+      <div className="container">
+        <h1>{page.title}</h1>
+        <p>{page.description}</p>
+      </div>
+      <div className="container-fluid products-stripe">
+        <div className="container">
+          <div className="products-grid">
+            {getProducts?.map((product) => (
+              <Link href={product.url} key={product.uid} className="product-card">
+                <img 
+                  src={product.product_image.url} 
+                  alt={product.product_display_name} 
+                />
+                <h2>{product.product_display_name}</h2>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
 
 export async function getServerSideProps(context: Context) {
   try {
-    const page = await getPageRes(context.resolvedUrl);
+    const page = await getGalleryRes(context.resolvedUrl);
     const products = await getProductListRes();
 
+    if (!page || !products) {
+      return { notFound: true };
+    }
+
     return {
-      props: {
-        pageUrl: context.resolvedUrl,
-        page,
-        products,
-      },
+      props: { 
+        page: JSON.parse(JSON.stringify(page)),
+        products: JSON.parse(JSON.stringify(products)) 
+      }
     };
   } catch (error) {
-    console.error(error);
+    console.error('Error in getServerSideProps:', error);
     return { notFound: true };
   }
 }
