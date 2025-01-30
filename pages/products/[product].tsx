@@ -76,16 +76,27 @@ export default function ProductPost({ productPost, pageUrl }: {
               className="product-image"
             />
           )}
-          <div className="product-description">
-            {getProduct && getProduct.product_description ? (
-              <div {...getProduct.$?.product_description as {}}>
-                {getProduct.product_description.children?.map((child, index) => (
-                  <p key={index}>{parse(child.children?.[0]?.text || '')}</p>
-                ))}
+          <div className="product-info">
+            {getProduct?.pricing && (
+              <div className="product-price">
+                <span className="product-msrp">MSRP</span> ${Number(getProduct.pricing).toLocaleString()}
               </div>
-            ) : (
-              <Skeleton height={400} />
             )}
+            <div className="product-description">
+              {getProduct && getProduct.product_description ? (
+                <div {...getProduct.$?.product_description as {}}>
+                  {getProduct.product_description.children?.map((child, index) => (
+                    <p key={index}>{parse(child.children?.[0]?.text || '')}</p>
+                  ))}
+                </div>
+              ) : (
+                <Skeleton height={400} />
+              )}
+            </div>
+            <div className="product-ctas">
+              <a className="product-find-dealer btn primary-btn">Find a Dealer</a>
+              <a className="product-financing btn tertiary-btn">Ask About Financing</a>
+          </div>
           </div>
         </div>
         {getProduct?.modular_pdp_layout?.map((ele, index) => 

@@ -28,7 +28,12 @@ export default function ProductsPage({ page, products }: { page: Page, products:
                   src={product.product_image.url} 
                   alt={product.product_display_name} 
                 />
-                <h2>{product.product_display_name}</h2>
+                <h2 className="product-name">{product.product_display_name}</h2>
+                {product.pricing && (
+                  <div className="product-price">
+                    ${Number(product.pricing).toLocaleString()}
+                  </div>
+                )}
               </Link>
             ))}
           </div>

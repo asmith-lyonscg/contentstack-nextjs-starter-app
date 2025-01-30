@@ -14,14 +14,14 @@ type ProductSpecsProps = {
 export const ProductSpecs: React.FC<ProductSpecsProps> = ({ specs }) => {
   return (
     <div className='product-specs-container'>
+      <h2>Specs</h2>
       <ul className='product-specs-list'>
         {specs.map((spec, index) => (
           <li className='product-spec-block' key={index}>
+            <div className="spec-label">{spec.spec_label}</div>
             <div className='product-spec-val-unit-group'>
               <div className="spec-value">{spec.spec_value}</div>
-              <div className="spec-unit">{spec.spec_unit}</div>
             </div>
-            <div className="spec-label">{spec.spec_label}</div>
           </li>
         ))}
       </ul>

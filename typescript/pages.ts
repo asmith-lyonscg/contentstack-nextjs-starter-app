@@ -129,6 +129,7 @@ export type Products = {
     children: any[];
   };
   product_image: Image;
+  pricing: string;
   url: string;
   uid: string;
   locale: string;
