@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { onEntryChange } from '../../contentstack-sdk';
 import { getPageRes, getProductListRes, getGalleryRes } from '../../helper';
 import { Page, Products, PageUrl, Context } from "../../typescript/pages";
@@ -7,6 +7,17 @@ import Link from 'next/link';
 export default function ProductsPage({ page, products }: { page: Page, products: Products[] }) {
   const [getProducts, setProducts] = useState(products);
   
+  // Sort products to match order in gallery's product_list
+  const sortedProducts = useMemo(() => {
+    if (!page.product_list) return getProducts;
+    
+    return [...getProducts].sort((a, b) => {
+      const aIndex = page.product_list?.findIndex(p => p.uid === a.uid) ?? -1;
+      const bIndex = page.product_list?.findIndex(p => p.uid === b.uid) ?? -1;
+      return aIndex - bIndex;
+    });
+  }, [getProducts, page.product_list]);
+
   useEffect(() => {
     onEntryChange(() => {
       getProductListRes().then(setProducts);
@@ -22,7 +33,7 @@ export default function ProductsPage({ page, products }: { page: Page, products:
       <div className="container-fluid products-stripe">
         <div className="container">
           <div className="products-grid">
-            {getProducts?.map((product) => (
+            {sortedProducts?.map((product) => (
               <Link href={product.url} key={product.uid} className="product-card">
                 <img 
                   src={product.product_image.url} 
@@ -31,7 +42,7 @@ export default function ProductsPage({ page, products }: { page: Page, products:
                 <h2 className="product-name">{product.product_display_name}</h2>
                 {product.pricing && (
                   <div className="product-price">
-                    ${Number(product.pricing).toLocaleString()}
+                    <small><em>MSRP</em></small> ${Number(product.pricing).toLocaleString()}
                   </div>
                 )}
               </Link>

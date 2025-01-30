@@ -82,6 +82,7 @@ export interface Page {
   uid: string;
   locale: string;
   page_components: Component[];
+  product_list?: Array<{ uid: string }>;
   seo: Seo;
   entryUrl?: string;
 }
