@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { onEntryChange } from '../../contentstack-sdk';
 import { getProductSingleRes } from '../../helper';
 import { Products, PageUrl } from "../../typescript/pages";
+import parse from 'html-react-parser';
+import Skeleton from 'react-loading-skeleton';
 import ProductSpecs from '../../components/product-specs';
 import Link from 'next/link';
 import ProductTestimonials from '../../components/product-testimonials';
@@ -75,9 +77,18 @@ export default function ProductPost({ productPost, pageUrl }: {
             />
           )}
           <div className="product-description">
-            {getProduct?.product_description?.children?.map((child, index) => (
-              <p key={child.uid || index}>{child.children?.[0]?.text}</p>
-            ))}
+            {getProduct && getProduct.product_description ? (
+              <div {...getProduct.$?.product_description as {}}>
+                {typeof getProduct.product_description === 'string' 
+                  ? parse(getProduct.product_description)
+                  : getProduct.product_description.children?.map((child: any) => 
+                      child.children?.[0]?.text && <p key={child.uid}>{child.children[0].text}</p>
+                    )
+                }
+              </div>
+            ) : (
+              <Skeleton height={400} />
+            )}
           </div>
         </div>
         {getProduct?.modular_pdp_layout?.map((ele, index) => 

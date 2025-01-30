@@ -199,6 +199,15 @@ footer a {
   padding-left: 1em;
 }
 
+/* products */
+.product-main {
+  padding: 0 0 20px;
+}
+.product-main img {
+  max-width: 100%;
+  box-shadow: 4px 4px 10px 5px #0004;
+}
+
 /* button area in contact form */
 
 .btn {

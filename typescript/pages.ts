@@ -20,6 +20,7 @@ type AdditionalParam = {
   announcement_text: string;
   label: {};
   url: string;
+  product_description: string;
 }
 
 type Post = {

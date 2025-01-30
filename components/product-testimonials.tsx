@@ -38,7 +38,9 @@ export const ProductTestimonials: React.FC<ProductTestimonialsProps> = ({ testim
                     ))}
                   </div>
                 ) : ''}
-                {testimonial.quote ? <p {...testimonial.$?.quote as {}}>{parse(testimonial.quote)}</p> : ''}
+                {testimonial.quote && typeof testimonial.quote === 'string' ? (
+                  <p {...testimonial.$?.quote as {}}>{parse(testimonial.quote)}</p>
+                ) : ''}
                 {testimonial.avatar || testimonial.name ? (
                   <div className='product-testimonial-footer-group'>
                     {testimonial.avatar ? (
