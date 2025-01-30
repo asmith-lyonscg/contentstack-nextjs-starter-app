@@ -9,7 +9,7 @@ import '../styles/third-party.css';
 import '../styles/style.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import '@contentstack/live-preview-utils/dist/main.css';
-import { Props } from "../typescript/pages";
+import { Props, BlogPosts } from "../typescript/pages";
 
 
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -18,7 +18,8 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp(props: Props) {
   const { Component, pageProps, header, footer, entries } = props;
-  const { page, posts, archivePost, blogPost } = pageProps;
+  const { page, posts, archivePost } = pageProps;
+  const blogPost = pageProps.blogPost as BlogPosts;
 
   const metaData = (seo: any) => {
     const metaArr = [];

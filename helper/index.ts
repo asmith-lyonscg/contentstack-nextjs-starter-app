@@ -1,5 +1,5 @@
 import { addEditableTags } from "@contentstack/utils";
-import { Page, BlogPosts } from "../typescript/pages";
+import { Page, BlogPosts, Products } from "../typescript/pages";
 import getConfig from "next/config";
 import { FooterProps, HeaderProps } from "../typescript/layout";
 import { getEntry, getEntryByUrl } from "../contentstack-sdk";
@@ -39,7 +39,7 @@ export const getAllEntries = async (): Promise<Page[]> => {
     jsonRtePath: undefined,
   })) as Page[][];
   liveEdit &&
-    response[0].forEach((entry) => addEditableTags(entry, "page", true));
+    response[0].forEach((entry) => addEditableTags(entry as any, "page", true));
   return response[0];
 };
 
@@ -54,7 +54,10 @@ export const getPageRes = async (entryUrl: string): Promise<Page> => {
       "page_components.section_with_html_code.description",
     ],
   })) as Page[];
-  liveEdit && addEditableTags(response[0], "page", true);
+  
+  if (liveEdit && response[0]?.uid) {
+    addEditableTags(response[0] as any, "page", true);
+  }
   return response[0];
 };
 
@@ -65,7 +68,7 @@ export const getBlogListRes = async (): Promise<BlogPosts[]> => {
     jsonRtePath: ["body"],
   })) as BlogPosts[][];
   liveEdit &&
-    response[0].forEach((entry) => addEditableTags(entry, "blog_post", true));
+    response[0].forEach((entry) => addEditableTags(entry as any, "blog_post", true));
   return response[0];
 };
 
@@ -77,5 +80,29 @@ export const getBlogPostRes = async (entryUrl: string): Promise<BlogPosts> => {
     jsonRtePath: ["body", "related_post.body"],
   })) as BlogPosts[];
   liveEdit && addEditableTags(response[0], "blog_post", true);
+  return response[0];
+};
+
+export const getProductListRes = async (): Promise<Products[]> => {
+  const response = (await getEntry({
+    contentTypeUid: "product",
+    referenceFieldPath: ["modular_pdp_layout.testimonials.testimonial"],
+    jsonRtePath: ["product_description"],
+  })) as Products[][];
+  
+  liveEdit &&
+    response[0].forEach((entry) => addEditableTags(entry as any, "product", true));
+  return response[0];
+};
+
+export const getProductSingleRes = async (entryUrl: string): Promise<Products> => {
+  const response = (await getEntryByUrl({
+    contentTypeUid: "product",
+    entryUrl,
+    referenceFieldPath: ["modular_pdp_layout.testimonials.testimonial"],
+    jsonRtePath: ["product_description"],
+  })) as Products[];
+  
+  liveEdit && addEditableTags(response[0], "product", true);
   return response[0];
 };

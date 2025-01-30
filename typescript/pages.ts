@@ -40,9 +40,15 @@ type Author = {
 
 type PageProps = {
   page: Page;
-  posts: [];
-  archivePost: []; 
-  blogPost: BlogPosts;
+  posts?: any[];
+  archivePost?: any[];
+  blogPost?: BlogPosts;
+  entryUrl: string;
+  Component: any;
+  entries: Entry;
+  pageProps: any;
+  header: HeaderProps;
+  footer: FooterProps;
 }
 
 type Seo = {
@@ -64,15 +70,19 @@ export type Props = {
   pageProps: PageProps;
   header: HeaderProps;
   footer: FooterProps;
+  blogPost?: BlogPosts;
+  blogList?: any[];
 }
 
-export type Page ={
-  page_components: Component[];
+export interface Page {
+  title: string;
+  description: string;
+  url: string;
   uid: string;
   locale: string;
-  url: string;
+  page_components: Component[];
   seo: Seo;
-  title: string;
+  entryUrl?: string;
 }
 
 export type Context = {
@@ -107,3 +117,49 @@ export type BlogPosts = {
   _owner: string;
   $: AdditionalParam;
 }
+
+export type Products = {
+  title: string;
+  product_display_name: string;
+  product_description: {
+    type: string;
+    uid: string;
+    attrs: any;
+    children: any[];
+  };
+  product_image: Image;
+  url: string;
+  uid: string;
+  locale: string;
+  modular_pdp_layout: Array<{
+    specs?: {
+      specs: Array<{
+        spec_value: string;
+        spec_unit: string;
+        spec_label: string;
+        _metadata: {
+          uid: string;
+        };
+      }>;
+      _metadata: {
+        uid: string;
+      };
+    };
+    testimonials?: {
+      testimonial: Array<{
+        uid: string;
+        _content_type_uid: string;
+      }>;
+      _metadata: {
+        uid: string;
+      };
+    };
+  }>;
+  _version: number;
+  created_at: string;
+  updated_at: string;
+  created_by: string;
+  updated_by: string;
+  _owner: string;
+  $?: AdditionalParam;
+};

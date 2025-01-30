@@ -1,7 +1,10 @@
 @import "./json-preview.css";
 @import "./tool-tip.css";
 :root {
-  --theme-color: #316cdd;
+  --theme-color: #367c2b;
+  --theme-color-alt: #266c1b;
+  --page-bg-color: #ffffee;
+  --page-bg-color-alt: #eeeedd;
 }
 
 body {
@@ -9,6 +12,8 @@ body {
   font-size: 14px;
   margin: 0;
   line-height: 22px;
+  background: var(--page-bg-color);
+  color: var(--theme-color-alt);
 }
 
 h1, h2, h3, h4 {
@@ -80,7 +85,7 @@ nav ul li a {
 }
 
 header {
-  background: #fff;
+  background: var(--page-bg-color-alt);
   position: sticky;
   top: 0;
   z-index: 9;
@@ -98,7 +103,9 @@ header .wrapper-logo {
 }
 
 header .wrapper-logo img {
-  width: 130px;
+  position: relative;
+  width: 115px;
+  z-index: 1;
 }
 
 header nav {
@@ -136,7 +143,7 @@ header nav li a:hover, header nav li a.active {
 
 footer {
   margin-top: 75px;
-  background: #fff;
+  background: var(--page-bg-color-alt);
 }
 
 footer a {
@@ -205,13 +212,13 @@ footer a {
 
 .primary-btn {
   background: var(--theme-color);
-  color: #fff;
+  color: var(--page-bg-color-alt);
   cursor: pointer;
 }
 
 .primary-btn:hover {
   background: var(--theme-color);
-  color: #fff;
+  color: var(--page-bg-color-alt);
   font-weight: 600;
 }
 
@@ -226,13 +233,13 @@ footer a {
 }
 
 .tertiary-btn {
-  background: #ffffff;
+  background: var(--page-bg-color-alt);
   color: var(--theme-color);
   font-weight: bold;
 }
 
 .tertiary-btn:hover {
-  color: #5c49be;
+  color: var(--theme-color-alt);
 }
 
 .btn-close {
@@ -360,9 +367,12 @@ footer a {
   flex-wrap: wrap;
 }
 
+.hero-banner img {
+  margin-top: 65px;
+}
+
 .hero-content, .home-content {
   text-align: left;
-  margin-top: 65px;
   width: 475px;
 }
 
@@ -371,12 +381,20 @@ footer a {
 }
 
 .home-advisor-section {
-  background: #fff;
+  background: var(--page-bg-color);
   display: flex;
   justify-content: space-evenly;
   text-align: center;
   margin: 63px;
   flex-wrap: wrap;
+  column-gap: 32px;
+}
+
+.home-advisor-section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    flex-basis: 40%;
 }
 
 .member-section {
@@ -465,8 +483,8 @@ footer a {
 
 .cards {
   width: 410px;
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
+  background: var(--page-bg-color);
+  border: 1px solid var(--page-bg-color-alt);
   border-radius: 5px;
   padding: 15px;
   margin-left: 24px;
@@ -691,7 +709,7 @@ footer a {
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .header {
     height: 70px;
-    background-color: #fff;
+    background-color: var(--page-bg-color-alt);
   }
 
   .header-div {
@@ -728,7 +746,7 @@ footer a {
     padding: 0;
     list-style: none;
     overflow: hidden;
-    background-color: #fff;
+    background-color: var(--page-bg-color);
   }
 
   .header li a {
@@ -753,7 +771,7 @@ footer a {
   .header .header-div {
     display: inline-block;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--page-bg-color-alt);
   }
 
   .header .wrapper-logo {
@@ -876,7 +894,7 @@ footer a {
   }
 
   .home-advisor-section {
-    background: #fff;
+    background: var(--page-bg-color-alt);
     display: flex;
     justify-content: space-evenly;
     text-align: left;
@@ -884,6 +902,13 @@ footer a {
     margin: 0;
     flex-wrap: wrap-reverse;
   }
+  
+  .home-advisor-section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    flex-basis: auto;
+}
 
   .blog-page-content {
     color: #fff;
@@ -976,8 +1001,8 @@ footer a {
   }
 
   .cards {
-    background: #ffffff;
-    border: 1px solid #e5e5e5;
+    background: var(--page-bg-color);
+    border: 1px solid var(--page-bg-color-alt);
     border-radius: 5px;
     padding: 22px;
     display: flex;
@@ -1143,7 +1168,7 @@ footer a {
   }
 
   .home-advisor-section {
-    background: #fff;
+    background: var(--page-bg-color-alt);
     display: flex;
     justify-content: space-evenly;
     text-align: center;
@@ -1204,8 +1229,8 @@ footer a {
 
   .cards {
     width: 334px;
-    background: #ffffff;
-    border: 1px solid #e5e5e5;
+    background: var(--page-bg-color);
+    border: 1px solid var(--page-bg-color-alt);
     border-radius: 5px;
     padding: 15px;
     margin-left: 24px;

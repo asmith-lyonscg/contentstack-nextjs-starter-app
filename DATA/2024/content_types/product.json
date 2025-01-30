@@ -1,0 +1,551 @@
+{
+    "title": "Product",
+    "uid": "product",
+    "schema": [
+        {
+            "data_type": "text",
+            "display_name": "Product ID",
+            "field_metadata": {
+                "_default": true,
+                "version": 3
+            },
+            "mandatory": true,
+            "uid": "title",
+            "unique": true,
+            "multiple": false,
+            "non_localizable": false
+        },
+        {
+            "data_type": "text",
+            "display_name": "URL",
+            "uid": "url",
+            "field_metadata": {
+                "_default": true,
+                "version": 3
+            },
+            "multiple": false,
+            "unique": false,
+            "mandatory": false,
+            "non_localizable": false
+        },
+        {
+            "data_type": "text",
+            "display_name": "Product Display Name",
+            "uid": "product_display_name",
+            "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+            },
+            "format": "",
+            "error_messages": {
+                "format": ""
+            },
+            "mandatory": false,
+            "multiple": false,
+            "non_localizable": false,
+            "unique": false
+        },
+        {
+            "display_name": "Color Variant Default",
+            "extension_uid": "blt5a2a1a5ac6377759",
+            "field_metadata": {
+                "extension": true,
+                "description": "Select the default color variant of the product. Alternative color variants can be defined below."
+            },
+            "uid": "color_variant_default",
+            "mandatory": false,
+            "non_localizable": false,
+            "unique": false,
+            "config": {},
+            "data_type": "text",
+            "multiple": false
+        },
+        {
+            "data_type": "number",
+            "display_name": "Available to Sell (ATS)",
+            "uid": "ats",
+            "field_metadata": {
+                "description": "",
+                "default_value": ""
+            },
+            "mandatory": false,
+            "multiple": false,
+            "non_localizable": false,
+            "unique": false
+        },
+        {
+            "data_type": "isodate",
+            "display_name": "In-Stock Date",
+            "uid": "in_stock_date",
+            "startDate": null,
+            "endDate": null,
+            "field_metadata": {
+                "description": "",
+                "default_value": {}
+            },
+            "mandatory": false,
+            "multiple": false,
+            "non_localizable": false,
+            "unique": false
+        },
+        {
+            "data_type": "blocks",
+            "display_name": "Modular PDP Layout",
+            "blocks": [
+                {
+                    "title": "Hero",
+                    "uid": "hero",
+                    "reference_to": "hero_banner"
+                },
+                {
+                    "title": "Specs",
+                    "uid": "specs",
+                    "schema": [
+                        {
+                            "data_type": "group",
+                            "display_name": "Specs",
+                            "field_metadata": {
+                                "description": "",
+                                "instruction": ""
+                            },
+                            "schema": [
+                                {
+                                    "data_type": "text",
+                                    "display_name": "Spec Value",
+                                    "uid": "spec_value",
+                                    "field_metadata": {
+                                        "description": "",
+                                        "default_value": "",
+                                        "version": 3
+                                    },
+                                    "format": "",
+                                    "error_messages": {
+                                        "format": ""
+                                    },
+                                    "mandatory": false,
+                                    "multiple": false,
+                                    "non_localizable": false,
+                                    "unique": false
+                                },
+                                {
+                                    "data_type": "text",
+                                    "display_name": "Spec Unit",
+                                    "uid": "spec_unit",
+                                    "field_metadata": {
+                                        "description": "",
+                                        "default_value": "",
+                                        "version": 3
+                                    },
+                                    "format": "",
+                                    "error_messages": {
+                                        "format": ""
+                                    },
+                                    "mandatory": false,
+                                    "multiple": false,
+                                    "non_localizable": false,
+                                    "unique": false
+                                },
+                                {
+                                    "data_type": "text",
+                                    "display_name": "Spec Label",
+                                    "uid": "spec_label",
+                                    "field_metadata": {
+                                        "description": "",
+                                        "default_value": "",
+                                        "isTitle": true,
+                                        "version": 3
+                                    },
+                                    "format": "",
+                                    "error_messages": {
+                                        "format": ""
+                                    },
+                                    "mandatory": false,
+                                    "multiple": false,
+                                    "non_localizable": false,
+                                    "unique": false
+                                }
+                            ],
+                            "uid": "specs",
+                            "mandatory": false,
+                            "multiple": true,
+                            "non_localizable": false,
+                            "unique": false
+                        }
+                    ]
+                },
+                {
+                    "title": "Features",
+                    "uid": "features",
+                    "schema": [
+                        {
+                            "data_type": "group",
+                            "display_name": "Features",
+                            "field_metadata": {
+                                "description": "",
+                                "instruction": ""
+                            },
+                            "schema": [
+                                {
+                                    "data_type": "text",
+                                    "display_name": "Feature H2 Heading",
+                                    "uid": "feature_h2_heading",
+                                    "field_metadata": {
+                                        "description": "",
+                                        "default_value": "",
+                                        "isTitle": true,
+                                        "instruction": "Feature Group Heading",
+                                        "version": 3
+                                    },
+                                    "format": "",
+                                    "error_messages": {
+                                        "format": ""
+                                    },
+                                    "mandatory": false,
+                                    "multiple": false,
+                                    "non_localizable": false,
+                                    "unique": false
+                                },
+                                {
+                                    "data_type": "text",
+                                    "display_name": "Feature Description",
+                                    "uid": "feature_description",
+                                    "field_metadata": {
+                                        "description": "",
+                                        "default_value": "",
+                                        "multiline": true,
+                                        "instruction": "Subheading",
+                                        "version": 3
+                                    },
+                                    "format": "",
+                                    "error_messages": {
+                                        "format": ""
+                                    },
+                                    "mandatory": false,
+                                    "multiple": false,
+                                    "non_localizable": false,
+                                    "unique": false
+                                },
+                                {
+                                    "data_type": "group",
+                                    "display_name": "Highlights",
+                                    "field_metadata": {
+                                        "description": "",
+                                        "instruction": ""
+                                    },
+                                    "schema": [
+                                        {
+                                            "data_type": "text",
+                                            "display_name": "Highlight Name",
+                                            "uid": "highlight_name",
+                                            "field_metadata": {
+                                                "description": "",
+                                                "default_value": "",
+                                                "isTitle": true,
+                                                "version": 3
+                                            },
+                                            "format": "",
+                                            "error_messages": {
+                                                "format": ""
+                                            },
+                                            "mandatory": false,
+                                            "multiple": false,
+                                            "non_localizable": false,
+                                            "unique": false
+                                        },
+                                        {
+                                            "data_type": "file",
+                                            "display_name": "Featured Image",
+                                            "uid": "featured_image",
+                                            "field_metadata": {
+                                                "description": "",
+                                                "rich_text_type": "standard",
+                                                "image": true
+                                            },
+                                            "mandatory": false,
+                                            "multiple": true,
+                                            "non_localizable": false,
+                                            "unique": false,
+                                            "dimension": {
+                                                "width": {
+                                                    "min": null,
+                                                    "max": 3000
+                                                },
+                                                "height": {
+                                                    "min": null,
+                                                    "max": 3000
+                                                }
+                                            },
+                                            "max": null,
+                                            "min": null,
+                                            "max_instance": 2
+                                        },
+                                        {
+                                            "data_type": "group",
+                                            "display_name": "Feature List",
+                                            "field_metadata": {
+                                                "description": "",
+                                                "instruction": ""
+                                            },
+                                            "schema": [
+                                                {
+                                                    "data_type": "boolean",
+                                                    "display_name": "Show title as list header",
+                                                    "uid": "show_title_above_list",
+                                                    "field_metadata": {
+                                                        "description": "",
+                                                        "default_value": false
+                                                    },
+                                                    "mandatory": false,
+                                                    "multiple": false,
+                                                    "non_localizable": false,
+                                                    "unique": false
+                                                },
+                                                {
+                                                    "data_type": "text",
+                                                    "display_name": "Feature List Item",
+                                                    "uid": "feature_list_item",
+                                                    "field_metadata": {
+                                                        "description": "",
+                                                        "default_value": "",
+                                                        "version": 3
+                                                    },
+                                                    "format": "",
+                                                    "error_messages": {
+                                                        "format": ""
+                                                    },
+                                                    "mandatory": false,
+                                                    "multiple": true,
+                                                    "non_localizable": false,
+                                                    "unique": false
+                                                }
+                                            ],
+                                            "uid": "feature_list",
+                                            "mandatory": false,
+                                            "multiple": false,
+                                            "non_localizable": false,
+                                            "unique": false
+                                        },
+                                        {
+                                            "data_type": "text",
+                                            "display_name": "Image Layout",
+                                            "display_type": "dropdown",
+                                            "enum": {
+                                                "advanced": false,
+                                                "choices": [
+                                                    {
+                                                        "value": "Image(s) Left"
+                                                    },
+                                                    {
+                                                        "value": "Image(s) Right"
+                                                    },
+                                                    {
+                                                        "value": "Image Full width"
+                                                    }
+                                                ]
+                                            },
+                                            "multiple": false,
+                                            "uid": "image_layout",
+                                            "field_metadata": {
+                                                "description": "",
+                                                "default_value": "Image(s) Right",
+                                                "instruction": "Choose Image(s) Left, Image(s) Right, or Image Full Width",
+                                                "version": 3
+                                            },
+                                            "mandatory": false,
+                                            "non_localizable": false,
+                                            "unique": false
+                                        }
+                                    ],
+                                    "uid": "highlights",
+                                    "mandatory": false,
+                                    "multiple": true,
+                                    "non_localizable": false,
+                                    "unique": false
+                                },
+                                {
+                                    "data_type": "group",
+                                    "display_name": "Feature Call to Action",
+                                    "field_metadata": {
+                                        "description": "",
+                                        "instruction": ""
+                                    },
+                                    "schema": [
+                                        {
+                                            "data_type": "link",
+                                            "display_name": "CTA Link",
+                                            "uid": "cta_link",
+                                            "field_metadata": {
+                                                "description": "",
+                                                "default_value": {
+                                                    "title": "",
+                                                    "url": ""
+                                                }
+                                            },
+                                            "mandatory": false,
+                                            "multiple": false,
+                                            "non_localizable": false,
+                                            "unique": false
+                                        },
+                                        {
+                                            "data_type": "text",
+                                            "display_name": "CTA Style",
+                                            "display_type": "dropdown",
+                                            "enum": {
+                                                "advanced": false,
+                                                "choices": [
+                                                    {
+                                                        "value": "Primary Button"
+                                                    },
+                                                    {
+                                                        "value": "Secondary Button"
+                                                    },
+                                                    {
+                                                        "value": "Text Link"
+                                                    }
+                                                ]
+                                            },
+                                            "multiple": false,
+                                            "uid": "cta_style",
+                                            "field_metadata": {
+                                                "description": "",
+                                                "default_value": "",
+                                                "version": 3
+                                            },
+                                            "mandatory": false,
+                                            "non_localizable": false,
+                                            "unique": false
+                                        }
+                                    ],
+                                    "uid": "feature_call_to_action",
+                                    "mandatory": false,
+                                    "multiple": false,
+                                    "non_localizable": false,
+                                    "unique": false
+                                }
+                            ],
+                            "uid": "features",
+                            "mandatory": false,
+                            "multiple": true,
+                            "non_localizable": false,
+                            "unique": false
+                        }
+                    ]
+                },
+                {
+                    "title": "Gallery",
+                    "uid": "gallery",
+                    "reference_to": "gallery_object"
+                },
+                {
+                    "title": "Color Variants",
+                    "uid": "color_variants",
+                    "schema": [
+                        {
+                            "data_type": "group",
+                            "display_name": "Color Variants",
+                            "field_metadata": {
+                                "description": "",
+                                "instruction": ""
+                            },
+                            "schema": [
+                                {
+                                    "display_name": "Variant Color",
+                                    "extension_uid": "blt5a2a1a5ac6377759",
+                                    "field_metadata": {
+                                        "extension": true
+                                    },
+                                    "uid": "variant_color",
+                                    "mandatory": false,
+                                    "non_localizable": false,
+                                    "unique": false,
+                                    "config": {},
+                                    "data_type": "text",
+                                    "multiple": false
+                                },
+                                {
+                                    "data_type": "file",
+                                    "display_name": "Variant Image",
+                                    "uid": "variant_image",
+                                    "extensions": [],
+                                    "field_metadata": {
+                                        "description": "",
+                                        "rich_text_type": "standard",
+                                        "isTitle": true
+                                    },
+                                    "mandatory": false,
+                                    "multiple": false,
+                                    "non_localizable": false,
+                                    "unique": false
+                                }
+                            ],
+                            "uid": "alternative_color_variants",
+                            "mandatory": false,
+                            "multiple": true,
+                            "non_localizable": false,
+                            "unique": false
+                        }
+                    ]
+                },
+                {
+                    "title": "Testimonials",
+                    "uid": "testimonials",
+                    "schema": [
+                        {
+                            "data_type": "reference",
+                            "display_name": "Testimonial",
+                            "reference_to": [
+                                "testimonial"
+                            ],
+                            "field_metadata": {
+                                "ref_multiple": true,
+                                "ref_multiple_content_types": true
+                            },
+                            "uid": "testimonial",
+                            "mandatory": false,
+                            "multiple": false,
+                            "non_localizable": false,
+                            "unique": false
+                        }
+                    ]
+                }
+            ],
+            "multiple": true,
+            "uid": "modular_pdp_layout",
+            "field_metadata": {
+                "instruction": "",
+                "description": ""
+            },
+            "mandatory": false,
+            "non_localizable": false,
+            "unique": false
+        }
+    ],
+    "description": "A product for resale on the site",
+    "field_rules": [
+        {
+            "match_type": "all",
+            "actions": [
+                {
+                    "action": "hide",
+                    "target_field": "in_stock_date"
+                }
+            ],
+            "conditions": [
+                {
+                    "value": "0",
+                    "operand_field": "ats",
+                    "operator": "greater_than"
+                }
+            ]
+        }
+    ],
+    "options": {
+        "is_page": true,
+        "singleton": false,
+        "sub_title": [],
+        "title": "title",
+        "url_prefix": "/products/",
+        "url_pattern": ":title"
+    }
+}

@@ -5,13 +5,12 @@ import { getPageRes } from '../helper';
 import Skeleton from 'react-loading-skeleton';
 import { Props } from "../typescript/pages";
 
-export default function Page(props: Props) {
-  const { page, entryUrl } = props;
+export default function Page({ page }: { page: any }) {
   const [getEntry, setEntry] = useState(page);
 
   async function fetchData() {
     try {
-      const entryRes = await getPageRes(entryUrl);
+      const entryRes = await getPageRes(page.entryUrl);
       if (!entryRes) throw new Error('Status code 404');
       setEntry(entryRes);
     } catch (error) {
@@ -23,15 +22,15 @@ export default function Page(props: Props) {
     onEntryChange(() => fetchData());
   }, [page]);
 
-  return getEntry.page_components ? (
+  return getEntry ? (
     <RenderComponents
       pageComponents={getEntry.page_components}
       contentTypeUid='page'
-      entryUid={getEntry.uid}
-      locale={getEntry.locale}
+      entryUid={getEntry.uid || ''}
+      locale={getEntry.locale || ''}
     />
   ) : (
-    <Skeleton count={3} height={300} />
+    <Skeleton height={400} />
   );
 }
 
